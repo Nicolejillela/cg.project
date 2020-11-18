@@ -12,7 +12,7 @@ String VALIDATE_USER_QUERY = "select * from UserRole where UserName = ? and Pass
 	
 	String GET_LOB_NAME = "select Bus_Seg_Id from BusinessSegment where Bus_Seg_Name = ?";
 	
-	String USER_EXISTS = "select * from UserRole where username = ?";
+	String USER_EXISTS = "select * from UserRole where UserName = ?";
 	
 	
 	
