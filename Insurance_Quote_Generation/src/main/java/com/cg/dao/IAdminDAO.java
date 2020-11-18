@@ -5,7 +5,7 @@ import com.cg.model.Accounts;
 import com.cg.model.Policy;
 import com.cg.model.UserRole;
 import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
-import java.util.AbstractList;
+import java.util.List.*;
 
 public interface IAdminDAO<PolicyQuestions> {
 	
@@ -24,7 +24,7 @@ public boolean loginValidation(String userName, String password) throws QGSExcep
 	
 	public String getBusSegId(int accNumber) throws QGSException;
 	
-	public List getPolicyQuestions(String busSegId) throws QGSException;
+	public java.util.List<String> getPolicyQuestions(String busSegId) throws QGSException;
 	
 	public Integer createPolicy(Policy policy) throws QGSException;
 	
@@ -32,7 +32,7 @@ public boolean loginValidation(String userName, String password) throws QGSExcep
 	
 	public void addPolicyDetails(int polNumber, List questionIds, List selectedAnswers) throws QGSException;
 	
-	public List getPolicies() throws QGSException;
+	public java.util.List<String> getPolicies() throws QGSException;
 	
 	public Accounts getAccountDetails(Integer accNumber) throws QGSException;
 	
@@ -40,7 +40,7 @@ public boolean loginValidation(String userName, String password) throws QGSExcep
 
 	public Double getPolicyPremium(Integer polNum) throws QGSException;
 
-	public List getSelectedAnswers(int polNum) throws QGSException;
+	public java.util.List<String> getSelectedAnswers(int polNum) throws QGSException;
 
 	public Integer getPolicyPremiumAmount(Integer sumOfWeightages) throws QGSException;
 

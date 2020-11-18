@@ -79,7 +79,7 @@ import com.cg.model.UserRole;
 
 
 
-		public com.sun.xml.internal.bind.v2.schemagen.xmlschema.List getPolicyQuestions(String busSegId)
+		public List<String> getPolicyQuestions(String busSegId)
 				throws QGSException {
 			// TODO Auto-generated method stub
 			return null;
@@ -113,7 +113,7 @@ import com.cg.model.UserRole;
 
 
 
-		public com.sun.xml.internal.bind.v2.schemagen.xmlschema.List getPolicies() throws QGSException {
+		public List<String> getPolicies() throws QGSException {
 			// TODO Auto-generated method stub
 			return null;
 		}
@@ -145,8 +145,7 @@ import com.cg.model.UserRole;
 
 
 
-		public com.sun.xml.internal.bind.v2.schemagen.xmlschema.List getSelectedAnswers(int polNum)
-				throws QGSException {
+		public List<String> getSelectedAnswers(int polNum)throws QGSException {
 			// TODO Auto-generated method stub
 			return null;
 		}
