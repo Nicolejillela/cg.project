@@ -21,7 +21,7 @@ public class JdbcUtility {
 		
 		try {
 			DriverManager.registerDriver(new OracleDriver());
-			connection = DriverManager.getConnection(url, "system", "Capgemini123");
+			connection = DriverManager.getConnection(url, "system", "123");
 			System.out.println("connected");
 			
 		} catch (SQLException e) {
