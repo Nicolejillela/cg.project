@@ -12,6 +12,7 @@ package com.cg.dao;
 import com.cg.model.Accounts;
 import com.cg.model.Policy;
 import com.cg.model.UserRole;
+import com.cg.utility.JdbcUtility;
 	
 
 	public class AdminDAO implements IAdminDAO{
@@ -19,17 +20,49 @@ import com.cg.model.UserRole;
 		static Connection connection = null;
 		static PreparedStatement prepareStatement = null;
 		static ResultSet resultSet = null;
+		
 
 		
 		
 		
 		public boolean loginValidation(String username, String password) throws QGSException {
-			return false;
-		
+			
+			 boolean found = false;
+			try {
+
+				System.out.println("In login validation method");
+				connection = JdbcUtility.getConnection();
+				System.out.println("In login validation method line 32");
+				prepareStatement = connection.prepareStatement(AdminQuery.VALIDATE_USER_QUERY);
+				prepareStatement.setString(1, username);
+				prepareStatement.setString(2, password);
+				resultSet = prepareStatement.executeQuery();
+				if(resultSet.next()) {
+					found = true;
+					String name = resultSet.getString(1);
+					String pwd = resultSet.getString(2);
+				}
+				else {
+					System.out.println("no user");
+				}
+			} catch (SQLException e) {
+				throw new QGSException("problem while creating PS object");
+			} finally {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					throw new QGSException("problem while closing");
+				}
+
+			}
+	        return found;
 		}
+		
+	
 
+	
 
-
+	
 
 		public String getRoleCode(String userName, String password) throws QGSException {
 			// TODO Auto-generated method stub
@@ -115,6 +148,7 @@ import com.cg.model.UserRole;
 
 		public List<String> getPolicies() throws QGSException {
 			// TODO Auto-generated method stub
+			
 			return null;
 		}
 
