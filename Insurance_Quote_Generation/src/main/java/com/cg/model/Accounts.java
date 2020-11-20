@@ -27,15 +27,21 @@ public class Accounts {
 	}
 
  
-	public Accounts(String insuredName, String insuredStreet, String insuredCity, String insuredState,
-			Integer insuredZip, String lineOfBusiness) {
-		super();
-		this.insuredName = insuredName;
-		this.insuredStreet = insuredStreet;
-		this.insuredCity = insuredCity;
-		this.insuredState = insuredState;
-		this.insuredZip = insuredZip;
-		this.lineOfBusiness = lineOfBusiness;
+//	public Accounts(String insuredName, String insuredStreet, String insuredCity, String insuredState,
+//			Integer insuredZip, String lineOfBusiness) {
+//		super();
+//		this.insuredName = insuredName;
+//		this.insuredStreet = insuredStreet;
+//		this.insuredCity = insuredCity;
+//		this.insuredState = insuredState;
+//		this.insuredZip = insuredZip;
+//		this.lineOfBusiness = lineOfBusiness;
+//	}
+
+
+	public Accounts(String insuredName2, String insuredStreet2, String insuredCity2, String insuredState2,
+			int insuredZip2) {
+		// TODO Auto-generated constructor stub
 	}
 
 
