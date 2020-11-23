@@ -1,6 +1,6 @@
 package com.cg.dao;
 
-public class InsuredQuery {
+public interface InsuredQuery {
 	
 	
 

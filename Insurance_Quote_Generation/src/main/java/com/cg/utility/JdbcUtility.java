@@ -22,7 +22,7 @@ public class JdbcUtility {
 		try {
 			DriverManager.registerDriver(new OracleDriver());
 			connection = DriverManager.getConnection(url, "system", "123");
-			System.out.println("connected");
+			System.out.println("Successfully connected to database");
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

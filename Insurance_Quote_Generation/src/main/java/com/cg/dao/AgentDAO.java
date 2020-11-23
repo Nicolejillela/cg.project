@@ -50,7 +50,6 @@ package com.cg.dao;
 	        return found;
 		}
 
-		
 		public int accountCreation(Accounts account, String userName) throws QGSException {
 			// TODO Auto-generated method stub
 			connection = JdbcUtility.getConnection();

@@ -21,9 +21,9 @@ public boolean loginValidation(String username, String password) throws QGSExcep
 		boolean found = false;
 		try {
 
-			System.out.println("In login validation method");
+			//System.out.println("In login validation method");
 			connection = JdbcUtility.getConnection();
-			System.out.println("In login validation method line 32");
+			//System.out.println("In login validation method line 32");
 			prepareStatement = connection.prepareStatement(AdminQuery.VALIDATE_USER_QUERY);
 			prepareStatement.setString(1, username);
 			prepareStatement.setString(2, password);
@@ -34,7 +34,7 @@ public boolean loginValidation(String username, String password) throws QGSExcep
 				String pwd = resultSet.getString(2);
 			}
 			else {
-				System.out.println("no user");
+				System.out.println("no User found");
 			}
 		} catch (SQLException e) {
 			throw new QGSException("problem while creating PS object");
