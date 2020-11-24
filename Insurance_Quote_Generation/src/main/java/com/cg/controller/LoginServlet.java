@@ -1,6 +1,9 @@
 package com.cg.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 
 	import java.io.IOException;
@@ -13,14 +16,14 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.Exception.QGSException;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
-import com.cg.utility.LoggerUtility;
+
 
 
 	@WebServlet("/LoginServlet")
@@ -30,7 +33,7 @@ import com.cg.utility.LoggerUtility;
 		@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			//Creating an object to Admin Service class
 			IAdminService adminService = new AdminService();
 			IInsuredService insuredService = new InsuredService();

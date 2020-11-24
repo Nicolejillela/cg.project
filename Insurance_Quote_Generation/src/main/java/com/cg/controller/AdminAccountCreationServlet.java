@@ -1,6 +1,7 @@
 package com.cg.controller;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.util.logging.Logger.*;
 	import java.io.IOException;
 	import java.io.PrintWriter;
@@ -16,7 +17,7 @@ import java.util.logging.Logger.*;
 	import com.cg.model.Accounts;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
-import com.cg.utility.LoggerUtility;
+
 
 	@WebServlet("/AccountCreationServlet")
 	public class AdminAccountCreationServlet extends HttpServlet{
@@ -30,7 +31,7 @@ import com.cg.utility.LoggerUtility;
 			IAdminService service = new AdminService();
 			
 			int isCreated = 0;
-			Logger logger = LoggerUtility.getLogger();
+			 Logger logger=LogManager.getLogger();
 			
 			PrintWriter out = response.getWriter();
 			RequestDispatcher dispatcher = null;
@@ -58,11 +59,13 @@ import com.cg.utility.LoggerUtility;
 					isCreated = service.accountCreation(account, userName);
 					if (isCreated == 1) {
 						logger.info("Account Created Successfully!!");
+						System.out.println("Account Created Successfully!!");
 						/*dispatcher = request.getRequestDispatcher("adminhome.html");
 						dispatcher.include(request, response);
 				*/	}
 				} else {
 					logger.info("User does not exists! First register as user");
+					System.out.println("User does not exists! First register as user");
 				/*	dispatcher = request.getRequestDispatcher("adminhome.html");
 					dispatcher.include(request, response);
 				*/}

@@ -16,13 +16,17 @@ package com.cg.controller;
 	import javax.servlet.http.HttpSession;
 	import javax.websocket.Session;
 
-import org.apache.log4j.Logger;
+
+import org.apache.logging.log4j.LogManager;
 
 import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.AgentService;
 	import com.cg.service.IAgentService;
-import com.cg.utility.LoggerUtility;
+	import org.apache.logging.log4j.LogManager;
+	import org.apache.logging.log4j.Logger;
+	import java.util.logging.Logger.*;
+
 
 	@WebServlet("/AgentPremiumGenerationServlet")
 	public class AgentPremiumGenerationServlet extends HttpServlet
@@ -31,7 +35,8 @@ import com.cg.utility.LoggerUtility;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		 PrintWriter out = response.getWriter();
-		 Logger logger = LoggerUtility.getLogger();
+		 Logger logger=LogManager.getLogger();
+			
 			ServletContext context = request.getServletContext();
 			int polPremium = 0;
 			int sumOfWeightages = 0;

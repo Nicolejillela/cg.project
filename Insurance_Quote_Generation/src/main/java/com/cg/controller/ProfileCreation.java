@@ -1,5 +1,8 @@
 package com.cg.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 	import java.io.IOException;
 	import java.io.PrintWriter;
@@ -11,7 +14,7 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.dao.AdminDAO;
 	import com.cg.dao.IAdminDAO;
@@ -19,7 +22,7 @@ import com.cg.dao.AdminDAO;
 	import com.cg.model.UserRole;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
-import com.cg.utility.LoggerUtility;
+
 
 	@WebServlet("/ProfileCreation")
 	public class ProfileCreation extends HttpServlet {
@@ -27,7 +30,7 @@ import com.cg.utility.LoggerUtility;
 		protected void doPost(HttpServletRequest request, HttpServletResponse response)
 				throws ServletException, IOException {
 			// TODO Auto-generated method stub
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			int isInserted = 0;
 			PrintWriter out = response.getWriter();
 			RequestDispatcher dispatcher = null;

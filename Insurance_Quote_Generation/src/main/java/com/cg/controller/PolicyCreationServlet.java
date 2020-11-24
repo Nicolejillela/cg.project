@@ -1,6 +1,9 @@
 package com.cg.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 	import java.io.IOException;
 
@@ -16,21 +19,21 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.dao.AdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.PolicyQuestions;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
-import com.cg.utility.LoggerUtility;
+
 	@WebServlet("/PolicyCreationServlet")
 	public class PolicyCreationServlet extends HttpServlet {
 
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			int accNumber = Integer.parseInt(request.getParameter("accNumber"));
 			ServletContext context = request.getServletContext();
 			context.setAttribute("accNumber", accNumber);

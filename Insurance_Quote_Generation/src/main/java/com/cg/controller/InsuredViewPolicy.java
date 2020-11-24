@@ -1,5 +1,8 @@
 package com.cg.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 
 	import java.io.IOException;
@@ -14,7 +17,7 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.dao.AdminDAO;
 	import com.cg.dao.IAdminDAO;
@@ -22,13 +25,13 @@ import com.cg.dao.AdminDAO;
 	import com.cg.model.Policy;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
-import com.cg.utility.LoggerUtility;
+
 	@WebServlet("/InsuredViewPolicy")
 	public class InsuredViewPolicy extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			IInsuredService service = new InsuredService();
 			PrintWriter out = response.getWriter();
 			

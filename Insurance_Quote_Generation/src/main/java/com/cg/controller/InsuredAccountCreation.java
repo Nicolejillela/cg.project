@@ -1,5 +1,8 @@
 package com.cg.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 	import java.io.IOException;
 	import java.io.PrintWriter;
@@ -10,7 +13,7 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.dao.AdminDAO;
 	import com.cg.Exception.QGSException;
@@ -19,7 +22,10 @@ import com.cg.dao.AdminDAO;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
-import com.cg.utility.LoggerUtility;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 	@WebServlet("/InsuredAccountCreation")
 	public class InsuredAccountCreation extends HttpServlet {
@@ -27,7 +33,7 @@ import com.cg.utility.LoggerUtility;
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
 			IInsuredService service = new InsuredService();
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			int isCreated = 0;
 			
 			PrintWriter out = response.getWriter();

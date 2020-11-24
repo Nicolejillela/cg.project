@@ -1,5 +1,9 @@
 package com.cg.controller;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
+import org.apache.logging.log4j.LogManager;
+
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -10,18 +14,18 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.Exception.QGSException;
 import com.cg.model.Accounts;
 import com.cg.service.AgentService;
 import com.cg.service.IAgentService;
-import com.cg.utility.LoggerUtility;
+
 @WebServlet("/AgentAccountCreationServlet")
 		public class AgentAccountCreationServlet extends HttpServlet {
 			@Override
 			protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				Logger logger = LoggerUtility.getLogger();
+				Logger logger=LogManager.getLogger();
 				
 		        IAgentService service = new AgentService();
 				
@@ -54,6 +58,7 @@ import com.cg.utility.LoggerUtility;
 						isAccountExists = service.accountValidation(userName);
 						if(isAccountExists) {
 							logger.info("Account already exists");
+							System.out.println("Account already exists");
 							dispatcher = request.getRequestDispatcher("agenthome.jsp");
 							dispatcher.include(request, response);
 						} else {
@@ -66,6 +71,7 @@ import com.cg.utility.LoggerUtility;
 						}
 					} else {
 						logger.info("User does not exists! First register as user");
+						//System.out.println("User does not exists! First register as user");
 						dispatcher = request.getRequestDispatcher("agenthome.jsp");
 						dispatcher.include(request, response);
 					}

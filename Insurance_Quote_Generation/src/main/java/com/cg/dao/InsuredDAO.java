@@ -67,7 +67,7 @@ public class InsuredDAO implements IInsuredDAO{
 					//System.out.println(name + " " + pwd);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object");
+				throw new QGSException("problem while creating  object");
 			} finally {
 				try {
 					connection.close();
@@ -94,7 +94,7 @@ public class InsuredDAO implements IInsuredDAO{
 					found = true;
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object");
+				throw new QGSException("problem while creating  object");
 			} finally {
 				try {
 					connection.close();
@@ -126,7 +126,7 @@ public class InsuredDAO implements IInsuredDAO{
 				
 
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object");
+				throw new QGSException("problem while creating  object");
 			} finally {
 				try {
 					resultSet.close();
@@ -200,7 +200,7 @@ public class InsuredDAO implements IInsuredDAO{
 					System.out.println("No Account so please create one");
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object");
+				throw new QGSException("problem while creating  object");
 			} finally {
 				try {
 					connection.close();
@@ -268,7 +268,7 @@ public class InsuredDAO implements IInsuredDAO{
 					System.out.println("Getting business segment id :" + busSegName);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object"+e.getMessage());
+				throw new QGSException("problem while creating  object"+e.getMessage());
 			} finally {
 				try {
 					connection.close();
@@ -298,7 +298,7 @@ public class InsuredDAO implements IInsuredDAO{
 					System.out.println("Getting policy premium: " + polPremium);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object"+e.getMessage());
+				throw new QGSException("problem while creating  object"+e.getMessage());
 			} finally {
 				try {
 					connection.close();
@@ -328,7 +328,7 @@ public class InsuredDAO implements IInsuredDAO{
 					selectedAns.add(resultSet.getString(1));
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object "+e.getMessage());
+				throw new QGSException("problem while creating  object "+e.getMessage());
 			} finally {
 				try {
 					connection.close();
@@ -369,7 +369,7 @@ public class InsuredDAO implements IInsuredDAO{
 					policyQuestions.add(polQues);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object"+e.getMessage());
+				throw new QGSException("problem while creating  object"+e.getMessage());
 			} finally {
 				try {
 					connection.close();

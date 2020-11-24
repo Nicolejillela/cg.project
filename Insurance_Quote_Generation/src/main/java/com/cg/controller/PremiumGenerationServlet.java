@@ -1,6 +1,9 @@
 package com.cg.controller;
 
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 	import java.io.IOException;
 	import java.io.PrintWriter;
@@ -15,14 +18,12 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
-
 import com.cg.dao.AdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
-import com.cg.utility.LoggerUtility;
+
 
 import jdk.nashorn.internal.runtime.Context;
 
@@ -32,7 +33,7 @@ import jdk.nashorn.internal.runtime.Context;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			PrintWriter out = response.getWriter();
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			ServletContext context = request.getServletContext();
 			int polPremium = 0;
 			int sumOfWeightages = 0;

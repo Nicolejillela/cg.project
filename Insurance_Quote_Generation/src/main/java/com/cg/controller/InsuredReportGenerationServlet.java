@@ -1,5 +1,8 @@
 package com.cg.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 
 	import java.io.IOException;
@@ -15,7 +18,7 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-import org.apache.log4j.Logger;
+
 
 import com.cg.dao.IInsuredDAO;
 	import com.cg.dao.InsuredDAO;
@@ -24,13 +27,13 @@ import com.cg.dao.IInsuredDAO;
 	import com.cg.model.PolicyQuestions;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
-import com.cg.utility.LoggerUtility;
+
 	@WebServlet("/InsuredReportGenerationServlet")
 	public class InsuredReportGenerationServlet extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			RequestDispatcher dispatcher = null;
 			String busSegName = null;
 			Double premium = 0.0;

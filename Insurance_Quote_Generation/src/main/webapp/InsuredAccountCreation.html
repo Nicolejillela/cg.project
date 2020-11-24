@@ -1,4 +1,83 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
 
+<style>
+
+.adminHP {
+			width: 38%;
+			height: 95%;
+			background: none;
+			position: absolute;
+			top: 47%;
+			left: 19%;
+			transform: translate(-50%, -50%);
+		}
+		.header {
+			background-color: rgba(28, 22, 23, 1);
+			width:263%;
+			height: 11%;
+			
+		}
+		.header button {
+			float:left;
+			color: white;
+			margin: 2px;
+			background-color: yellow;
+			cursor: pointer;
+			text-align: right;
+			padding: 20px 30px;
+			text-decoration: none;
+			font-size: 120%;
+			position: relative;
+			top:7%;
+			left:0%;
+			border: none;
+		}
+		.header-right {
+			float: right;
+			top:-17%;
+			right : 0%;
+			border: none;
+			position: relative;
+			padding: 20px 0px
+			
+		}
+		.header button:hover {
+			background-color: #ddd;
+			color: black;
+			
+		}
+
+</style>
+<body>
+
+<div class="adminHP">
+		<div class="header">
+			<button href="#default" class="logo">CompanyLogo</button>
+			<div class="header-right">
+				<button class="active" href="homepage2new.html">Logout</button>
+			</div>
+		</div>
+		</div>
+
+<form action="InsuredAccountCreation" method="post">
+		User Name : <input type="text" name="userName"><br>
+		Insured Name:<input type="text" name="insuredName"><br>
+		Insured Street:<input type="text" name="insuredStreet"><br>
+		Insured City:<input	type="text" name="insuredCity"><br>
+		Insured State:<input type="text" name="insuredState">
+		Insured Zip:<input type="text" name="insuredZip"><br>
+		Business Segment / Line of Business:<input type="text" name="busSegName"><br>
+		
+		
+		<input type="submit" value="Create Account">
+	</form>
+</body>
+</html> -->
 
 
 <html>
@@ -10,7 +89,7 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	
+	background: url("pic6.jpg");
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -33,9 +112,9 @@ body {
 		}
 		.header button {
 			float:left;
-			
+			color: white;
 			margin: 2px;
-			
+			background-color: yellow;
 			cursor: pointer;
 			text-align: right;
 			padding: 20px 30px;
@@ -64,7 +143,7 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
-	
+	<!--background: url("pic8.jpg");-->
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -100,11 +179,11 @@ h1 {
 
 .accountbox input[type = "text"] {
 	border: none;
-	width: 75%;
+	width: 100%;
 	border-bottom: 1px solid black;
 	background: transparent;
 	outline: none;
-	height: 10px;
+	height: 22px;
 	color: black;
     font-size: 16px;
 	padding: 0px;
@@ -138,21 +217,15 @@ h1 {
 
 </style>
 </head>
-<script type="text/javascript">
-window.history.forward();
-function noBack() 
-{
-	window.history.forward();	
-}
-</script>
+
 <body>
 
 
 <div class="adminHP">
 		<div class="header">
-			
+			<button href="#default" class="logo">CompanyLogo</button>
 			<div class="header-right">
-				
+				<button class="active" href="homepage2new.html">Logout</button>
 			</div>
 		</div>
 		</div>
@@ -160,7 +233,7 @@ function noBack()
 	<div class = "accountbox">
 	<h1>Account Creation</h1>
 	<br>
-	<form action = "InsuredAccountCreation" method = "post">
+	<form action ="InsuredAccountCreation" method = "post">
 		<p>User Name</p>
 		<input type = "text" name = "userName" pattern = "[a-zA-Z][a-zA-Z0-9]{8,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
 		<p>Insured Name</p>
@@ -179,8 +252,8 @@ function noBack()
 			<option value = "Restaurant">Restaurant</option>
 			<option value = "Apartment">Apartment</option>
 			<option value = "General Merchant">General Merchant</option>
+			<!-- <option value = "life">Life</option> -->
 		</select><br><br><br><br>
-		
 		<center><input type = "submit" name = "submit" value = "Create Account"></center>
 	</form>
 </body>

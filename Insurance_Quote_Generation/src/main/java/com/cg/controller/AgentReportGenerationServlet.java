@@ -1,5 +1,8 @@
 package com.cg.controller;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import java.util.logging.Logger.*;
 
 	import java.io.IOException;
 	import java.util.ArrayList;
@@ -12,7 +15,6 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 
 import com.cg.Exception.QGSException;
 	import com.cg.model.Accounts;
@@ -21,7 +23,7 @@ import com.cg.Exception.QGSException;
 	import com.cg.service.AgentService;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IAgentService;
-import com.cg.utility.LoggerUtility;
+
 
 	@WebServlet("/AgentReportGenerationServlet")
 	public class AgentReportGenerationServlet extends HttpServlet{
@@ -29,7 +31,7 @@ import com.cg.utility.LoggerUtility;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
-			Logger logger = LoggerUtility.getLogger();
+			Logger logger=LogManager.getLogger();
 			RequestDispatcher dispatcher = null;
 			int accNumber = Integer.parseInt(request.getParameter("accNumber"));
 			String busSegName = null;
