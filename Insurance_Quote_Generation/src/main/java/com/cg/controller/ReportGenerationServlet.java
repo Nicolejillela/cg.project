@@ -12,18 +12,22 @@ import java.io.IOException;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-	import com.cg.dao.AdminDAO;
+import org.apache.log4j.Logger;
+
+import com.cg.dao.AdminDAO;
 	import com.cg.dao.IAdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Accounts;
 	import com.cg.model.PolicyQuestions;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
+import com.cg.utility.LoggerUtility;
 	@WebServlet("/ReportGenerationServlet")
 	public class ReportGenerationServlet extends HttpServlet{
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
+			Logger logger = LoggerUtility.getLogger();
 			RequestDispatcher dispatcher = null;
 			int accNumber = Integer.parseInt(request.getParameter("accNumber"));
 			String busSegName = null;
@@ -52,7 +56,7 @@ import java.io.IOException;
 				
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
+				logger.error(e.getMessage());
 			}
 			
 		}

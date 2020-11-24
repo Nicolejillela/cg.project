@@ -1,11 +1,9 @@
 package com.cg.controller;
 
-
-
+import org.apache.log4j.Logger;
+import java.util.logging.Logger.*;
 	import java.io.IOException;
 	import java.io.PrintWriter;
-	import java.util.logging.Logger;
-
 	import javax.servlet.RequestDispatcher;
 	import javax.servlet.ServletException;
 	import javax.servlet.annotation.WebServlet;
@@ -18,11 +16,13 @@ package com.cg.controller;
 	import com.cg.model.Accounts;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/AccountCreationServlet")
 	public class AdminAccountCreationServlet extends HttpServlet{
 		
-		static Logger log = Logger.getLogger("Admin");
+		
+		
 		
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +30,7 @@ package com.cg.controller;
 			IAdminService service = new AdminService();
 			
 			int isCreated = 0;
+			Logger logger = LoggerUtility.getLogger();
 			
 			PrintWriter out = response.getWriter();
 			RequestDispatcher dispatcher = null;
@@ -37,15 +38,15 @@ package com.cg.controller;
 			String userName = request.getParameter("userName");
 			String insuredName = request.getParameter("insuredName");
 			String insuredStreet = request.getParameter("insuredStreet");
-			System.out.println(insuredStreet);
+			logger.info(insuredStreet);
 			String insuredCity = request.getParameter("insuredCity");
 			String insuredState = request.getParameter("insuredState");
 			int insuredZip = Integer.parseInt(request.getParameter("insuredZip"));
 			String busSegName = request.getParameter("busSegName");
-			System.out.println("hello");
+			logger.info("hello");
 			//int accNumber = Integer.parseInt(request.getParameter("accnumber"));
-			
-			System.out.println("line 38");
+		
+			logger.info("line 38");
 			try {
 							
 				String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
@@ -56,17 +57,17 @@ package com.cg.controller;
 
 					isCreated = service.accountCreation(account, userName);
 					if (isCreated == 1) {
-						out.println("Account Created Successfully!!");
+						logger.info("Account Created Successfully!!");
 						/*dispatcher = request.getRequestDispatcher("adminhome.html");
 						dispatcher.include(request, response);
 				*/	}
 				} else {
-					out.println("User does not exists! First register as user");
+					logger.info("User does not exists! First register as user");
 				/*	dispatcher = request.getRequestDispatcher("adminhome.html");
 					dispatcher.include(request, response);
 				*/}
 			} catch (QGSException e) {
-				System.out.println(e.getMessage());
+				logger.error(e.getMessage());
 			}
 
 		}

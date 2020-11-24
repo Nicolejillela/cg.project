@@ -12,12 +12,15 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-	import com.cg.dao.AdminDAO;
+import org.apache.log4j.Logger;
+
+import com.cg.dao.AdminDAO;
 	import com.cg.dao.IAdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/ViewPolicy")
 	public class ViewPolicy extends HttpServlet{
@@ -25,6 +28,7 @@ package com.cg.controller;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			IAdminService service = new AdminService();
+			Logger logger = LoggerUtility.getLogger();
 			RequestDispatcher dispatcher = null;
 			try {
 				List<Policy> policies = service.getPolicies();
@@ -34,7 +38,8 @@ package com.cg.controller;
 				dispatcher.include(request, response);
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 		@Override

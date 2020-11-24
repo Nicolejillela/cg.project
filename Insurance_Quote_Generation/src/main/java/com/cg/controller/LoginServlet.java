@@ -13,11 +13,14 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-	import com.cg.Exception.QGSException;
+import org.apache.log4j.Logger;
+
+import com.cg.Exception.QGSException;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
+import com.cg.utility.LoggerUtility;
 
 
 	@WebServlet("/LoginServlet")
@@ -27,6 +30,7 @@ package com.cg.controller;
 		@Override
 		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+			Logger logger = LoggerUtility.getLogger();
 			//Creating an object to Admin Service class
 			IAdminService adminService = new AdminService();
 			IInsuredService insuredService = new InsuredService();
@@ -86,7 +90,7 @@ package com.cg.controller;
 					
 				} else {
 					
-					out.println("User not found, Please register");
+					logger.info("User not found, Please register");
 					
 					
 	/*				System.out.println("User not found");
@@ -95,7 +99,7 @@ package com.cg.controller;
 			}catch (QGSException e) {
 			
 				//throw new LoginException("Error occured while validating"+e.getMessage());
-				System.out.println(e.getMessage());
+				logger.error(e.getMessage());
 			
 			}
 		}

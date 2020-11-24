@@ -14,17 +14,21 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-	import com.cg.dao.AdminDAO;
+import org.apache.log4j.Logger;
+
+import com.cg.dao.AdminDAO;
 	import com.cg.dao.IAdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
+import com.cg.utility.LoggerUtility;
 	@WebServlet("/InsuredViewPolicy")
 	public class InsuredViewPolicy extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			
+			Logger logger = LoggerUtility.getLogger();
 			IInsuredService service = new InsuredService();
 			PrintWriter out = response.getWriter();
 			
@@ -52,14 +56,15 @@ package com.cg.controller;
 				}
 				
 				else {
-					out.println("Policies does not exists.. ");
+					logger.info("Policies does not exists.. ");
 					/*dispatcher = request.getRequestDispatcher("insurerhome.html");
 					dispatcher.include(request, response);*/
 								
 				}
 			}catch (QGSException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 		

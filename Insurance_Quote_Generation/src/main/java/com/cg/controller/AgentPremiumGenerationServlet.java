@@ -16,10 +16,13 @@ package com.cg.controller;
 	import javax.servlet.http.HttpSession;
 	import javax.websocket.Session;
 
-	import com.cg.Exception.QGSException;
+import org.apache.log4j.Logger;
+
+import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.AgentService;
 	import com.cg.service.IAgentService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/AgentPremiumGenerationServlet")
 	public class AgentPremiumGenerationServlet extends HttpServlet
@@ -28,7 +31,7 @@ package com.cg.controller;
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 
 	{
 		 PrintWriter out = response.getWriter();
-
+		 Logger logger = LoggerUtility.getLogger();
 			ServletContext context = request.getServletContext();
 			int polPremium = 0;
 			int sumOfWeightages = 0;
@@ -69,7 +72,7 @@ package com.cg.controller;
 				policy.setPolicyPremium(polPremium);
 				isInserted = service.createPolicy(policy);
 				if(isInserted > 0) {
-					out.println("Policy created successfully!!!!");
+					logger.info("Policy created successfully!!!!");
 					polNumber = service.getPolicyNumber();
 					String username = (String)session.getAttribute("username");
 					service.addPolicyDetails(polNumber, questionIds, selectedAnswers);

@@ -9,13 +9,17 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServlet;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
-	import com.cg.dao.AdminDAO;
+
+import org.apache.log4j.Logger;
+
+import com.cg.dao.AdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Accounts;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/InsuredAccountCreation")
 	public class InsuredAccountCreation extends HttpServlet {
@@ -23,7 +27,7 @@ package com.cg.controller;
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
 			IInsuredService service = new InsuredService();
-			
+			Logger logger = LoggerUtility.getLogger();
 			int isCreated = 0;
 			
 			PrintWriter out = response.getWriter();
@@ -44,13 +48,13 @@ package com.cg.controller;
 				
 				isCreated = service.accountCreation(account, userName);
 				if (isCreated == 1) {
-					out.println("Account Created Successfully!!");
-					dispatcher = request.getRequestDispatcher("insurerhome.html");//insurerhome.html");
+					logger.info("Account Created Successfully!!");
+					dispatcher = request.getRequestDispatcher("insuredhome1.html");//insurerhome.html");
 					dispatcher.forward(request, response);
 				}
 				
 			} catch (QGSException e) {
-				System.out.println(e.getMessage());
+				logger.error(e.getMessage());
 			}
 
 		}

@@ -35,7 +35,7 @@ public class InsuredDAO implements IInsuredDAO{
 				resultSet = prepareStatement.executeQuery();
 				found = resultSet.next();
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating PS object");
+				throw new QGSException("problem while creating  object");
 			} finally {
 				try {
 					connection.close();

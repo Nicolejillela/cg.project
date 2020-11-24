@@ -14,11 +14,13 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
 
-	import com.cg.Exception.QGSException;
+import com.cg.Exception.QGSException;
 	import com.cg.model.PolicyQuestions;
 	import com.cg.service.AgentService;
 	import com.cg.service.IAgentService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/AgentPolicyCreationServlet")
 	public class AgentPolicyCreationServlet extends HttpServlet {
@@ -26,6 +28,8 @@ package com.cg.controller;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
+			
+			Logger logger = LoggerUtility.getLogger();
 			int accNumber = Integer.parseInt(request.getParameter("accNo"));
 			ServletContext context = request.getServletContext();
 			context.setAttribute("accNumber", accNumber);
@@ -53,7 +57,7 @@ package com.cg.controller;
 					request.setAttribute("questions", policyQuestions);
 					dispatcher.forward(request, response);
 				} else {
-					out.println("Account does not exists, so create an account");
+					logger.info("Account does not exists, so create an account");
 					dispatcher = request.getRequestDispatcher("agenthome.jsp");
 					dispatcher.include(request, response);
 

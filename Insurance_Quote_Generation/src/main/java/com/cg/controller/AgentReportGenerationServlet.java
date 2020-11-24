@@ -12,13 +12,16 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-	import com.cg.Exception.QGSException;
+import org.apache.log4j.Logger;
+
+import com.cg.Exception.QGSException;
 	import com.cg.model.Accounts;
 	import com.cg.model.PolicyQuestions;
 	import com.cg.service.AdminService;
 	import com.cg.service.AgentService;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IAgentService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/AgentReportGenerationServlet")
 	public class AgentReportGenerationServlet extends HttpServlet{
@@ -26,6 +29,7 @@ package com.cg.controller;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
+			Logger logger = LoggerUtility.getLogger();
 			RequestDispatcher dispatcher = null;
 			int accNumber = Integer.parseInt(request.getParameter("accNumber"));
 			String busSegName = null;
@@ -55,7 +59,7 @@ package com.cg.controller;
 				
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
+				logger.info(e.getMessage());
 			}
 			
 		}

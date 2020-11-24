@@ -15,19 +15,22 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-	import com.cg.dao.IInsuredDAO;
+import org.apache.log4j.Logger;
+
+import com.cg.dao.IInsuredDAO;
 	import com.cg.dao.InsuredDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Accounts;
 	import com.cg.model.PolicyQuestions;
 	import com.cg.service.IInsuredService;
 	import com.cg.service.InsuredService;
+import com.cg.utility.LoggerUtility;
 	@WebServlet("/InsuredReportGenerationServlet")
 	public class InsuredReportGenerationServlet extends HttpServlet {
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			// TODO Auto-generated method stub
-			
+			Logger logger = LoggerUtility.getLogger();
 			RequestDispatcher dispatcher = null;
 			String busSegName = null;
 			Double premium = 0.0;
@@ -61,7 +64,7 @@ package com.cg.controller;
 				
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
-				System.out.println(e.getMessage());
+			logger.error(e.getMessage());
 			}
 			
 		}

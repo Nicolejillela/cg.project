@@ -1,5 +1,5 @@
 package com.cg.controller;
-
+import org.apache.log4j.Logger;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -9,14 +9,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.log4j.Logger;
+
 import com.cg.Exception.QGSException;
 import com.cg.model.Accounts;
 import com.cg.service.AgentService;
 import com.cg.service.IAgentService;
+import com.cg.utility.LoggerUtility;
 @WebServlet("/AgentAccountCreationServlet")
 		public class AgentAccountCreationServlet extends HttpServlet {
 			@Override
 			protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+				Logger logger = LoggerUtility.getLogger();
 				
 		        IAgentService service = new AgentService();
 				
@@ -29,15 +34,15 @@ import com.cg.service.IAgentService;
 				String userName = request.getParameter("userName");
 				String insuredName = request.getParameter("insuredName");
 				String insuredStreet = request.getParameter("insuredStreet");
-				//System.out.println(insuredStreet);
+				//System.Logger.info(insuredStreet);
 				String insuredCity = request.getParameter("insuredCity");
 				String insuredState = request.getParameter("insuredState");
 				int insuredZip = Integer.parseInt(request.getParameter("insuredZip"));
 				String busSegName = request.getParameter("busSegName");
-				//System.out.println("hello");
+				//System.Logger.info("hello");
 				//int accNumber = Integer.parseInt(request.getParameter("accnumber"));
 				
-				//System.out.println("line 38");
+				//System.Logger.info("line 38");
 				try {
 								
 					String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
@@ -48,24 +53,24 @@ import com.cg.service.IAgentService;
 		                
 						isAccountExists = service.accountValidation(userName);
 						if(isAccountExists) {
-							out.println("Account already exists");
+							logger.info("Account already exists");
 							dispatcher = request.getRequestDispatcher("agenthome.jsp");
 							dispatcher.include(request, response);
 						} else {
 						    isCreated = service.accountCreation(account, userName);
 						    if (isCreated == 1) {
-							out.println("Account Created Successfully!!");
+							logger.info("Account Created Successfully!!");
 							dispatcher = request.getRequestDispatcher("agenthome.jsp");
 							dispatcher.include(request, response);
 						   }
 						}
 					} else {
-						out.println("User does not exists! First register as user");
+						logger.info("User does not exists! First register as user");
 						dispatcher = request.getRequestDispatcher("agenthome.jsp");
 						dispatcher.include(request, response);
 					}
 				} catch (QGSException e) {
-					System.out.println(e.getMessage());
+					logger.error(e.getMessage());
 				}
 
 			}

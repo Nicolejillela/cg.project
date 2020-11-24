@@ -15,13 +15,16 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletRequest;
 	import javax.servlet.http.HttpServletResponse;
 
-	import com.cg.dao.AdminDAO;
+import org.apache.log4j.Logger;
+
+import com.cg.dao.AdminDAO;
 	import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.AdminService;
 	import com.cg.service.IAdminService;
+import com.cg.utility.LoggerUtility;
 
-	import jdk.nashorn.internal.runtime.Context;
+import jdk.nashorn.internal.runtime.Context;
 
 	@WebServlet("/PremiumGenerationServlet")
 	public class PremiumGenerationServlet extends HttpServlet {
@@ -29,7 +32,7 @@ package com.cg.controller;
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			PrintWriter out = response.getWriter();
-
+			Logger logger = LoggerUtility.getLogger();
 			ServletContext context = request.getServletContext();
 			int polPremium = 0;
 			int sumOfWeightages = 0;
@@ -69,7 +72,7 @@ package com.cg.controller;
 				policy.setPolicyPremium(polPremium);
 				isInserted = service.createPolicy(policy);
 				if(isInserted > 0) {
-					out.println("Policy created successfully!!!!");
+					logger.info("Policy created successfully!!!!");
 					polNumber = service.getPolicyNumber();
 					service.addPolicyDetails(polNumber, questionIds, selectedAnswers);
 					System.out.println("In Premium generation servlet "+polNumber);
@@ -82,7 +85,8 @@ package com.cg.controller;
 				*/			
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				logger.error(e.getStackTrace());
 			}
 		}
 	}

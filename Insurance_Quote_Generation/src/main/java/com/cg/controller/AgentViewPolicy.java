@@ -13,16 +13,19 @@ package com.cg.controller;
 	import javax.servlet.http.HttpServletResponse;
 	import javax.servlet.http.HttpSession;
 
-	import com.cg.Exception.QGSException;
+import org.apache.log4j.Logger;
+
+import com.cg.Exception.QGSException;
 	import com.cg.model.Policy;
 	import com.cg.service.AdminService;
 	import com.cg.service.AgentService;
 	import com.cg.service.IAdminService;
 	import com.cg.service.IAgentService;
+import com.cg.utility.LoggerUtility;
 
 	@WebServlet("/AgentViewPolicy")
 	public class AgentViewPolicy extends HttpServlet{
-		
+		Logger logger = LoggerUtility.getLogger();
 		@Override
 		protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			IAgentService service = new AgentService();
@@ -37,7 +40,8 @@ package com.cg.controller;
 				dispatcher.include(request, response);
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				//e.printStackTrace();
+				logger.error(e.getMessage());
 			}
 		}
 		@Override
