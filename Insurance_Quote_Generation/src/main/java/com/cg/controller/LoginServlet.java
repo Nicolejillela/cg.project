@@ -1,65 +1,107 @@
 package com.cg.controller;
 
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import com.cg.Exception.QGSException;
-import com.cg.service.AdminService;
-import com.cg.service.IAdminService;
-import com.cg.service.InsuredService;
 
 
-@SuppressWarnings("serial")
-@WebServlet("/LoginServlet")
+	import java.io.IOException;
+	import java.io.PrintWriter;
+	import javax.servlet.RequestDispatcher;
+	import javax.servlet.ServletException;
+	import javax.servlet.annotation.WebServlet;
+	import javax.servlet.http.HttpServlet;
+	import javax.servlet.http.HttpServletRequest;
+	import javax.servlet.http.HttpServletResponse;
+	import javax.servlet.http.HttpSession;
 
-//This Servlet is used to validate the user and redirect them to the respective homepage  
-public class LoginServlet extends HttpServlet{
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		
-		PrintWriter out = response.getWriter();
-		RequestDispatcher dispatcher = null;
-		IAdminService adminService = new AdminService();
-		HttpSession session = request.getSession();
-		boolean isFound = false;
-		String username = request.getParameter("username");
-		String password = request.getParameter("password");
-		session.setAttribute("username", username);
-		//System.out.println(username);
-		try {
+	import com.cg.Exception.QGSException;
+	import com.cg.service.AdminService;
+	import com.cg.service.IAdminService;
+	import com.cg.service.IInsuredService;
+	import com.cg.service.InsuredService;
+
+
+	@WebServlet("/LoginServlet")
+
+	//This Servlet is used to validate the user and redirect them to the respective homepage  
+	public class LoginServlet extends HttpServlet{
+		@Override
+		protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+			
+			//Creating an object to Admin Service class
+			IAdminService adminService = new AdminService();
+			IInsuredService insuredService = new InsuredService();
+			HttpSession session = request.getSession();
+			
+			RequestDispatcher dispatcher=null;
+			
+			String roleCode = "";
+			boolean isFound = false;
+			boolean isUserExists = false;
+			
+			PrintWriter out = response.getWriter();
 			
 			
-			isFound = adminService.loginValidation(username,password);
-			
-			if(isFound == true) {
-				System.out.println("user exist");
-			}else {
-				System.out.println("Account not exist create your account");
-				dispatcher = request.getRequestDispatcher("InsuredAccountCreation.jsp");
-				dispatcher.forward(request, response);
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			session.setAttribute("username", username);
+			System.out.println(username);
+			try {
 				
-			}
+				
+				isFound = adminService.loginValidation(username,password);
+				
+				if(isFound == true) {
+				
+					roleCode = adminService.getRoleCode(username, password);
+				    System.out.println("Rolecode is:"+roleCode);
+					if(roleCode != null) {
+					
+						if(roleCode.equals("UW")) {
 						
-		}catch (QGSException e) {
-		
-			//throw new LoginException("Error occured while validating"+e.getMessage());
-			System.out.println(e.getMessage());
-		
+							dispatcher = request.getRequestDispatcher("adminhome.html");
+							dispatcher.forward(request, response);
+						
+						}else if(roleCode.equals("A")) {
+						    
+							System.out.println(roleCode);
+							dispatcher = request.getRequestDispatcher("agenthome.jsp");
+							dispatcher.forward(request, response);
+						
+						}else if(roleCode.equals("I")){
+							
+							isUserExists = insuredService.accountValidation(username);
+							if (isUserExists) {
+								//if (isCreated == 1) {
+									//out.println("Account Created Successfully!!");
+									dispatcher = request.getRequestDispatcher("insurerhome.html");//insurerhome.html");
+									dispatcher.forward(request, response);
+							}else {
+										//out.println("Account does not exists! Create Account");
+										dispatcher = request.getRequestDispatcher("InsuredAccountCreation.html");
+										dispatcher.include(request, response);
+							}
+												
+						}
+					}
+					
+				} else {
+					
+					out.println("User not found, Please register");
+					
+					
+	/*				System.out.println("User not found");
+	*/
+				}
+			}catch (QGSException e) {
+			
+				//throw new LoginException("Error occured while validating"+e.getMessage());
+				System.out.println(e.getMessage());
+			
+			}
+		}
+		@Override
+		protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			// TODO Auto-generated method stub
+			doGet(req, resp);
 		}
 	}
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(req, resp);
-	}
-}
