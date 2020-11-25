@@ -50,7 +50,7 @@ import com.cg.service.IAgentService;
 				try {
 								
 					String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
-					Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId);
+					Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId,0);
 					
 					isUserExists = service.isUserExists(userName);
 					if (isUserExists) {
@@ -59,7 +59,7 @@ import com.cg.service.IAgentService;
 						if(isAccountExists) {
 							logger.info("Account already exists");
 							System.out.println("Account already exists");
-							dispatcher = request.getRequestDispatcher("agenthome.jsp");
+							dispatcher = request.getRequestDispatcher("insuredhome1.html");
 							dispatcher.include(request, response);
 						} else {
 						    isCreated = service.accountCreation(account, userName);

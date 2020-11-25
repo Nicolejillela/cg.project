@@ -29,7 +29,7 @@ public class TestingUtility {
  
     @Test
     public void testLoginPage() {
-        beginAt("index.jsp"); 
+        beginAt("login.html"); 
         assertTitleEquals("Login");
         //assertLinkPresent("home");
         //clickLink("home");

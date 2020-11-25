@@ -35,7 +35,7 @@ public class InsuredDAO implements IInsuredDAO{
 				resultSet = prepareStatement.executeQuery();
 				found = resultSet.next();
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object");
+				throw new QGSException("problem while creating  object1");
 			} finally {
 				try {
 					connection.close();
@@ -67,7 +67,7 @@ public class InsuredDAO implements IInsuredDAO{
 					//System.out.println(name + " " + pwd);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object");
+				throw new QGSException("problem while creating  object2");
 			} finally {
 				try {
 					connection.close();
@@ -94,7 +94,7 @@ public class InsuredDAO implements IInsuredDAO{
 					found = true;
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object");
+				throw new QGSException("problem while creating  object3");
 			} finally {
 				try {
 					connection.close();
@@ -109,24 +109,27 @@ public class InsuredDAO implements IInsuredDAO{
 		
 		public int accountCreation(Accounts account,String userName) throws QGSException {
 			// TODO Auto-generated method stub
-
+				int AccountNumber=1;
 			connection = JdbcUtility.getConnection();
+			System.out.println(account);
 			int isInserted = 0;
 			try {
 				prepareStatement = connection.prepareStatement(InsuredQuery.ACCOUNT_CREATION);
-				prepareStatement.setString(1, account.getInsuredName());
-				prepareStatement.setString(2, account.getInsuredStreet());
-				prepareStatement.setString(3, account.getInsuredCity());
-				prepareStatement.setString(4, account.getInsuredState());
-				prepareStatement.setInt(5, account.getInsuredZip());
-				prepareStatement.setString(6, account.getLineOfBusiness());
-				prepareStatement.setString(7, userName);
-				
+				prepareStatement.setInt(1, account.getAccountNumber());
+				prepareStatement.setString(2, account.getInsuredName());
+				prepareStatement.setString(3, account.getInsuredStreet());
+				prepareStatement.setString(4, account.getInsuredCity());
+				prepareStatement.setString(5, account.getInsuredState());
+				prepareStatement.setInt(6, account.getInsuredZip());
+				prepareStatement.setString(7, account.getLineOfBusiness());
+				prepareStatement.setString(8, userName);
+				 AccountNumber++;
 				isInserted = prepareStatement.executeUpdate();
+				
 				
 
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object");
+				e.printStackTrace();
 			} finally {
 				try {
 					resultSet.close();
@@ -200,7 +203,7 @@ public class InsuredDAO implements IInsuredDAO{
 					System.out.println("No Account so please create one");
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object");
+				throw new QGSException("problem while creating  object5");
 			} finally {
 				try {
 					connection.close();
@@ -268,7 +271,7 @@ public class InsuredDAO implements IInsuredDAO{
 					System.out.println("Getting business segment id :" + busSegName);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object"+e.getMessage());
+				throw new QGSException("problem while creating  object6"+e.getMessage());
 			} finally {
 				try {
 					connection.close();
@@ -298,7 +301,7 @@ public class InsuredDAO implements IInsuredDAO{
 					System.out.println("Getting policy premium: " + polPremium);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object"+e.getMessage());
+				throw new QGSException("problem while creating  object7"+e.getMessage());
 			} finally {
 				try {
 					connection.close();
@@ -328,7 +331,7 @@ public class InsuredDAO implements IInsuredDAO{
 					selectedAns.add(resultSet.getString(1));
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object "+e.getMessage());
+				throw new QGSException("problem while creating  object8 "+e.getMessage());
 			} finally {
 				try {
 					connection.close();
@@ -369,7 +372,7 @@ public class InsuredDAO implements IInsuredDAO{
 					policyQuestions.add(polQues);
 				}
 			} catch (SQLException e) {
-				throw new QGSException("problem while creating  object"+e.getMessage());
+				throw new QGSException("problem while creating  object9"+e.getMessage());
 			} finally {
 				try {
 					connection.close();

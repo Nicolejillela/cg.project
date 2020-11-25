@@ -50,7 +50,7 @@ import java.util.logging.Logger.*;
 			try {
 				
 				String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
-				Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId);
+				Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId,0);
 				
 				isCreated = service.accountCreation(account, userName);
 				if (isCreated == 1) {

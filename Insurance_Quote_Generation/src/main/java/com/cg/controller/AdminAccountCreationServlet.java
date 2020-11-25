@@ -44,14 +44,14 @@ import java.util.logging.Logger.*;
 			String insuredState = request.getParameter("insuredState");
 			int insuredZip = Integer.parseInt(request.getParameter("insuredZip"));
 			String busSegName = request.getParameter("busSegName");
-			logger.info("hello");
+			//logger.info("hello");
 			//int accNumber = Integer.parseInt(request.getParameter("accnumber"));
 		
 			logger.info("line 38");
 			try {
 							
 				String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);
-				Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId);
+				Accounts account = new Accounts(insuredName, insuredStreet, insuredCity, insuredState, insuredZip, bussinessSegmentId,0);
 				
 				isUserExists = service.isUserExists(userName);
 				if (isUserExists) {

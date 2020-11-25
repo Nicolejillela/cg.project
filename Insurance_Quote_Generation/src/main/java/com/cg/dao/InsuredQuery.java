@@ -6,7 +6,7 @@ public interface InsuredQuery {
 
 	
 
-		String ACCOUNT_CREATION = "insert into accounts values(account_number.nextval,?,?,?,?,?,?,?)";
+		String ACCOUNT_CREATION = "insert into accounts values(?,?,?,?,?,?,?,?)";
 		
 		String VALIDATE_ACCOUNT_QUERY ="select * from accounts where username = ?";
 

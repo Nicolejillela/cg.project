@@ -3,6 +3,7 @@ package com.cg.service;
 
 
 import java.util.List;
+import java.util.Random;
 
 import com.cg.dao.IInsuredDAO;
 import com.cg.dao.InsuredDAO;
@@ -32,6 +33,10 @@ import com.cg.model.PolicyQuestions;
 			
 			public int accountCreation(Accounts account, String userName) throws QGSException {
 				// TODO Auto-generated method stub
+				Random rnd=new Random();
+				int accountnumber=rnd.nextInt(900000)+100000 ;
+				account.setAccountNumber(accountnumber);
+				
 				return insuredDao.accountCreation(account, userName);
 			}
 
