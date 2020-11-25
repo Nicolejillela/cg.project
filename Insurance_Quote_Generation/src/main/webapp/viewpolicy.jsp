@@ -50,13 +50,13 @@
 	
 	
 	<table class = "table" cellpadding="20px" border="0px">
-		<th>Policy Number
+		<th>Business Segment
 		<th>Policy Premium
 		<th>Account Number
 		<th>
 		<c:forEach items="${policies}" var="policy">
 			<tr class = "tr">
-				<td><c:out value="${policy.policyNumber}" /><br>
+				<td><c:out value=BusinessSegment /><br>
 				<td><c:out value="${policy.policyPremium}" /><br>
 				<td><c:out value="${policy.accNumber }" /><br>
 				<td><a href="ReportGenerationServlet?accNumber=${policy.accNumber}&polNumber=${policy.policyNumber}">View Policy</a>

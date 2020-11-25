@@ -47,7 +47,7 @@ import java.util.logging.Logger.*;
 			//logger.info("hello");
 			//int accNumber = Integer.parseInt(request.getParameter("accnumber"));
 		
-			logger.info("line 38");
+			//logger.info("line 38");
 			try {
 							
 				String bussinessSegmentId = service.getLineOfBusinessIdByName(busSegName);

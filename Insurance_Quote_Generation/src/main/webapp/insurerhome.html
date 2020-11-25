@@ -24,7 +24,7 @@
 			overflow: hidden;
 			margin: 0;
 			padding: 0;
-			background: url("pic6.jpg");
+			
 			background-size: cover;
 			background-position: center;
 		}
@@ -133,11 +133,11 @@
 	function policyCreation() {
 	document.getElementById("displayIframe").innerHTML="<iframe src ='policycreation.html' class='userframe'></iframe>";
 	}
-	/* function reportGeneration() {
-	document.getElementById("displayIframe").innerHTML="<iframe src ='reportGeneration.html' class ='userframe'></iframe>";
+	 function reportGeneration() {
+	document.getElementById("displayIframe1").innerHTML="<iframe src ='reportGeneration.html' class ='userframe'></iframe>";
 	} */
 	function viewPolicy() {
-	document.getElementById("displayIframe").innerHTML="<iframe src ='InsuredViewPolicy' class ='userframe' height = '700' width = '500'></iframe>";
+	document.getElementById("displayIframe").innerHTML="<iframe src ='InsuredViewPolicies.jsp' class ='userframe' height = '700' width = '500'></iframe>";
 	}
 	
 	
@@ -153,21 +153,23 @@
 
 	<div class="adminHP">
 		<div class="header">
-			<button href="index.html" class="logo">CompanyLogo</button>
+			
 			<div class="header-right">
-				<button class="active" href="LogoutServlet">Logout</button>
+				
 			</div>
 		</div>
 		</div>
 
 	<div id ="displayIframe"></div>
 	<ul>
-<!-- 
-		<li><button type = "submit" onclick="profileCreation()"><b>ProfileCreation</b></button></li>
-		<li><button type = "submit" onclick="accountCreation()"><b>Account Creation</b></button></li>
-		<li><button type = "submit" onclick="policyCreation()"><b>Policy Creation</b></button></li> -->
-		<li><button type = "submit" onclick="viewPolicy()"><b>ViewPolicy</b></button></li>  
+
+		<li><button type = "submit" onclick="viewPolicy()"><b>ViewPolicy</b></button></li> 
+		<li><button type = "submit" onclick="ViewAccountNumber"><b>View Account Number</b></button></li> 
+		
+		 
 	</ul>
+	
+	
 	
 
 	

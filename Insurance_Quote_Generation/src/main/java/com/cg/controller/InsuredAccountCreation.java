@@ -55,7 +55,7 @@ import java.util.logging.Logger.*;
 				isCreated = service.accountCreation(account, userName);
 				if (isCreated == 1) {
 					logger.info("Account Created Successfully!!");
-					dispatcher = request.getRequestDispatcher("insuredhome1.html");//insurerhome.html");
+					dispatcher = request.getRequestDispatcher("insurerhome.html");//insurerhome.html");
 					dispatcher.forward(request, response);
 				}
 				

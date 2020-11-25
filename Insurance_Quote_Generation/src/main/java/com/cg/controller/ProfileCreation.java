@@ -49,13 +49,14 @@ import com.cg.dao.AdminDAO;
 				isInserted = service.addUser(userRole);
 				if (isInserted > 0) {
 					logger.info("User Role created successfully!!!!");
-					/*dispatcher = request.getRequestDispatcher("adminhome.html");
+					
+					dispatcher = request.getRequestDispatcher("login.html");
 					dispatcher.include(request, response);
-			*/	} else {
+				} else {
 					logger.info("Username already exists!! Enter a different Username");
-			/*		dispatcher = request.getRequestDispatcher("profilecreation.html");
+				dispatcher = request.getRequestDispatcher("login.html");
 					dispatcher.include(request, response);
-			*/	}
+			}
 			} catch (QGSException e) {
 				// TODO Auto-generated catch block
 				//e.printStackTrace();

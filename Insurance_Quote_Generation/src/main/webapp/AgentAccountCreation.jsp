@@ -234,17 +234,17 @@ h1 {
 	<br>
 	<form action = "AgentAccountCreationServlet" method = "post">
 		<p>User Name</p>
-		<input type = "text" name = "userName" pattern = "[a-zA-Z][a-zA-Z0-9]{8,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
+		<input type = "text" name = "userName" pattern = "[a-zA-Z][a-zA-Z0-9]{3,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
 		<br><br><p>Insured Name</p>
-		<input type = "text" name = "insuredName" pattern = "[a-zA-Z][a-zA-Z0-9]{8,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
+		<input type = "text" name = "insuredName" pattern = "[a-zA-Z][a-zA-Z0-9]{3,20}" title = "The insured name should contain letters and numbers with atleast 8 characters" required>
 		<br><br><p>Insured Street</p>
-		<input type = "text" name = "insuredStreet" pattern = "[a-zA-Z]{6,20}" title = "The street name should contain only letters with atleast 6 characters" required>
+		<input type = "text" name = "insuredStreet" pattern = "[a-zA-Z]{3,20}" title = "The street name should contain only letters with atleast 6 characters" required>
 		<br><br><p>Insured City</p>
-		<input type = "text" name = "insuredCity"  pattern = "[a-zA-Z]{8,20}" title = "The city name should contain only letters with atleast 8 characters" required>
+		<input type = "text" name = "insuredCity"  pattern = "[a-zA-Z]{3,20}" title = "The city name should contain only letters with atleast 8 characters" required>
 		<br><br><p>Insured State</p>
-		<input type = "text" name = "insuredState"  pattern = "[a-zA-Z]{8,20}" title = "The state name should contain only letters with atleast 8 characters" required>
+		<input type = "text" name = "insuredState"  pattern = "[a-zA-Z]{3,20}" title = "The state name should contain only letters with atleast 8 characters" required>
 		<br><br><p>Insured zip</p>
-		<input type = "text" name = "insuredZip"  required>
+		<input type = "text" name = "insuredZip" pattern=[0-9]{5} required>
 		<br><br><p>Business Segment</p>
 		<br>
 		<select name = "busSegName">

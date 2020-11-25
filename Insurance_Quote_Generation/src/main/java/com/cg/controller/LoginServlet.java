@@ -94,6 +94,10 @@ import com.cg.Exception.QGSException;
 				} else {
 					
 					logger.info("User not found, Please register");
+					dispatcher = request.getRequestDispatcher("profilecreation.html");
+					dispatcher.forward(request, response);
+					
+					
 					
 					
 	/*				System.out.println("User not found");
